@@ -11,7 +11,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="bg-white w-full flex flex-wrap justify-between items-center p-4 relative">
+    <div className="mb-6 bg-white w-full flex flex-wrap justify-between items-center p-4 relative">
       <div className="flex items-center">
         <div className="rounded-full bg-primary p-3 inline-flex mr-2">
           <ImBlogger className="text-white text-2xl" />
@@ -34,13 +34,13 @@ export default function Navbar() {
         <div
           className={`md:top-0 md:-right-0 md:flex items-center md:flex-row md:relative md:p-0 md:w-auto ${
             isOpen
-              ? "top-12 -right-3 flex flex-col absolute right-0 top-full bg-white z-10 p-3 w-max"
+              ? "top-12 -right-4 flex flex-col absolute bg-white z-10 p-3 w-max"
               : "hidden"
           }`}
         >
-          <div className="mx-2 relative">
+          <div className="m-2 relative">
             <span className="text-gray-500 font-bold text-xl">Posts</span>
-            <span className="flex items-center justify-center w-8 h-8 absolute -top-7 -right-3 bg-red-500 text-white rounded-full text-sm px-1">
+            <span className="flex items-center justify-center w-8 h-8 absolute -top-7 -right-3 bg-green-400 text-white rounded-full text-sm px-1">
               100
             </span>
           </div>
