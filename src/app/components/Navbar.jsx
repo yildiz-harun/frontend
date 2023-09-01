@@ -41,7 +41,7 @@ export default function Navbar() {
           }`}
         >
           <div className="m-2 relative">
-            <span className="text-gray-500 font-bold text-xl">Posts</span>
+            <Link href={"/posts"} className="text-gray-500 font-bold text-xl">Posts</Link>
             <span className="flex items-center justify-center w-8 h-8 absolute -top-7 -right-3 bg-green-400 text-white rounded-full text-sm px-1">
               {posts.length}
             </span>
