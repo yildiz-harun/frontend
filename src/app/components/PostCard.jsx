@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 function truncateContent(content, limit) {
@@ -7,14 +8,16 @@ function truncateContent(content, limit) {
   return truncated;
 }
 
-export default function PostCard({ title, content }) {
+export default function PostCard({ id, title, content }) {
   return (
-    <div className="w-full rounded-lg overflow-hidden bg-white mx-4 my-4 p-4 max-w-sm">
-      {/* Title */}
-      <h2 className="text-2xl font-semibold mb-2 truncate">{title}</h2>
+    <Link href={`/post/${id}`}>
+      <div className="w-auto rounded-lg overflow-hidden bg-white mx-4 my-4 p-4 max-w-sm">
+        {/* Title */}
+        <h2 className="text-2xl font-semibold mb-2 truncate">{title}</h2>
 
-      {/* Content */}
-      <p>{truncateContent(content, 3)}</p>
-    </div>
+        {/* Content */}
+        <p>{truncateContent(content, 12)}</p>
+      </div>
+    </Link>
   );
 }
