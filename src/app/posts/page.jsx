@@ -1,15 +1,21 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchInitialPosts } from "../GlobalRedux/Features/Posts/postsSlice";
+import { setFetched } from "../GlobalRedux/Features/Posts/isFetchedSlice";
+
 import PostCard from "../components/PostCard";
 
 export default function Posts() {
   const posts = useSelector((state) => state.posts);
   const dispatch = useDispatch();
+  const isFetched = useSelector((state) => state.isFetched);
 
   useEffect(() => {
-    dispatch(fetchInitialPosts());
+    if (!isFetched) {
+      dispatch(fetchInitialPosts());
+      dispatch(setFetched());
+    }
   }, [dispatch]);
 
   return (
