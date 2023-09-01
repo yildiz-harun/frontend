@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { CgProfile, CgMail } from "react-icons/cg";
 
 export default function PostDetail({ id, title, content }) {
   const [comments, setComments] = useState([]);
@@ -19,15 +20,25 @@ export default function PostDetail({ id, title, content }) {
         <p>{content}</p>
       </div>
       {/* Comments */}
-      <h3 className="w-auto text-center rounded-lg overflow-hidden bg-white p-4 mb-4">Comments:</h3>
+      <h3 className="w-auto text-center rounded-lg overflow-hidden bg-white p-4 mb-4">
+        Comments:
+      </h3>
       {comments.map((comment) => (
         <div
           className="w-auto rounded-lg overflow-hidden bg-white p-4 mb-4"
           key={comment.id}
         >
-          <p className="w-auto rounded-lg overflow-hidden bg-white ">Name: {comment.name}</p>
-          <p className="w-auto rounded-lg overflow-hidden bg-white ">E-mail: {comment.email}</p>
-          <p className="w-auto rounded-lg overflow-hidden bg-white ">{comment.body}</p>
+          <p className="flex items-center w-auto rounded-lg overflow-hidden bg-white">
+            <CgProfile className="mr-2" size={24} />
+            {comment.name}
+          </p>
+          <p className="flex items-center w-auto rounded-lg overflow-hidden bg-white ">
+            <CgMail className="mr-2" size={24} />
+            {comment.email}
+          </p>
+          <p className="w-auto rounded-lg overflow-hidden bg-white ">
+            Comment: {comment.body}
+          </p>
         </div>
       ))}
     </>
