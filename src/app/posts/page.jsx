@@ -16,6 +16,7 @@ export default function Posts() {
       dispatch(fetchInitialPosts());
       dispatch(setFetched());
     }
+    console.log(posts);
   }, [dispatch]);
 
   return (

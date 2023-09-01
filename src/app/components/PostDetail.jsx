@@ -20,15 +20,18 @@ export default function PostDetail({
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch(`https://jsonplaceholder.typicode.com/posts/${id}/comments`)
-      .then((response) => response.json())
-      .then((data) => setComments(data));
+    try {
+      fetch(`https://jsonplaceholder.typicode.com/posts/${id}/comments`)
+        .then((response) => response.json())
+        .then((data) => setComments(data));
+    } catch (error) {}
     setNewTitle(initialTitle);
     setNewContent(initialContent);
+    console.log(newTitle, id, newContent);
   }, [id, initialTitle, initialContent]);
 
   const handleUpdate = () => {
-    dispatch(updatePost({ id: Number(id), title: newTitle, body: newContent }));
+    dispatch(updatePost({ id: id, title: newTitle, body: newContent }));
     setModalOpen(false);
   };
 

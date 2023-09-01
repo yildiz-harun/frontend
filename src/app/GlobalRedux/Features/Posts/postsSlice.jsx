@@ -18,8 +18,8 @@ export const postsSlice = createSlice({
       state.push(action.payload);
     },
     removePost: (state, action) => {
-      const idToRemove = Number(action.payload.id); // Convert to Number
-      return state.filter((post) => Number(post.id) !== idToRemove); // Convert post.id to Number
+      const idToRemove = action.payload.id;
+      return state.filter((post) => post.id !== idToRemove);
     },
     
     updatePost: (state, action) => {

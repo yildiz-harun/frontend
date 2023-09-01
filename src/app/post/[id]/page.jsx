@@ -1,16 +1,12 @@
 "use client"
 import { useEffect, useState } from "react";
 import PostDetail from "@/app/components/PostDetail";
+import { useSelector } from 'react-redux';
 
 export default function Post({params}) {
-  const [post, setPost] = useState(null);
-  useEffect(() => {
-    if (params.id) {
-      fetch(`https://jsonplaceholder.typicode.com/posts/${params.id}`)
-        .then((res) => res.json())
-        .then((data) => setPost(data));
-    }
-  }, [params.id]);
+  const post = useSelector(state => 
+    state.posts.find(post => post.id == params.id)
+  );
 
   if (!post) return <div>Loading...</div>;
 
