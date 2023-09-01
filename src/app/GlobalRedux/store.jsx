@@ -1,10 +1,12 @@
 "use client";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import postsReducer from "./Features/Posts/postsSlice";
+import isFetchedReducer from "./Features/Posts/isFetchedSlice"; 
+
 
 const rootReducer = combineReducers({
   posts: postsReducer,
-  //add all your reducers here
+  isFetched: isFetchedReducer,
 });
 
 export const store = configureStore({
