@@ -6,10 +6,9 @@ export const fetchInitialPosts = createAsyncThunk(
   async () => {
     const response = await fetch("https://jsonplaceholder.typicode.com/posts");
     const allPosts = await response.json();
-    return allPosts.filter(post => post.userId === 1);
+    return allPosts.filter((post) => post.userId === 1);
   }
 );
-
 
 export const postsSlice = createSlice({
   name: "posts",
@@ -19,8 +18,10 @@ export const postsSlice = createSlice({
       state.push(action.payload);
     },
     removePost: (state, action) => {
-      return state.filter((post) => post.id !== action.payload.id);
+      const idToRemove = Number(action.payload.id); // Convert to Number
+      return state.filter((post) => Number(post.id) !== idToRemove); // Convert post.id to Number
     },
+    
     updatePost: (state, action) => {
       const index = state.findIndex((post) => post.id === action.payload.id);
       if (index >= 0) {
