@@ -5,9 +5,11 @@ export const fetchInitialPosts = createAsyncThunk(
   "posts/fetchInitial",
   async () => {
     const response = await fetch("https://jsonplaceholder.typicode.com/posts");
-    return await response.json();
+    const allPosts = await response.json();
+    return allPosts.filter(post => post.userId === 1);
   }
 );
+
 
 export const postsSlice = createSlice({
   name: "posts",
