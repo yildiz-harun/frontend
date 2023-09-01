@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import Link from "next/link";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { ImBlogger } from "react-icons/im";
@@ -8,6 +9,7 @@ import { BsFillGridFill } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
 
 export default function Navbar() {
+  const posts = useSelector((state) => state.posts);
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -41,7 +43,7 @@ export default function Navbar() {
           <div className="m-2 relative">
             <span className="text-gray-500 font-bold text-xl">Posts</span>
             <span className="flex items-center justify-center w-8 h-8 absolute -top-7 -right-3 bg-green-400 text-white rounded-full text-sm px-1">
-              100
+              {posts.length}
             </span>
           </div>
           <GoBellFill className="text-gray-500 text-2xl m-2" />
