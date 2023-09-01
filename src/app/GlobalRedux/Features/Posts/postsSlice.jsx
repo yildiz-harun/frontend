@@ -23,10 +23,13 @@ export const postsSlice = createSlice({
     },
     
     updatePost: (state, action) => {
-      const index = state.findIndex((post) => post.id === action.payload.id);
+      const idToUpdate = action.payload.id; 
+      const index = state.findIndex((post) => post.id == idToUpdate);  // Use '==' to match both string and number
       if (index >= 0) {
-        state[index] = action.payload;
-      }
+        console.log("Updating post", action.payload);
+        state[index] = {...state[index], ...action.payload};
+     }
+     console.log(JSON.parse(JSON.stringify(state)));
     },
   },
   extraReducers: (builder) => {
