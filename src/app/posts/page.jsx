@@ -13,7 +13,7 @@ export default function Posts() {
   }, [dispatch]);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 w-full bg-white place-items-center">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 w-full bg-white ">
       {posts
         .filter((post) => post.userId === 1)
         .map((post, index, array) => (
@@ -22,6 +22,7 @@ export default function Posts() {
               index === array.length - 1 ? "justify-self-start" : ""
             }`}
             key={post.id}
+            id={post.id}
             title={post.title}
             content={post.body}
           />
